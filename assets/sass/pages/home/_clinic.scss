@@ -1,0 +1,140 @@
+@use "../../abstracts" as *;
+
+.clinic{
+    position: relative;
+
+    &::after{
+        position: absolute;
+        right: 0;
+        bottom: -30rem;
+        width: 23rem;
+        height: 30rem;
+        background:{
+            image: url("../images/imagem-petalas-05.png");
+            size: contain;
+            position: center;
+            repeat: no-repeat;
+        }
+        content: '';
+        z-index: 10;
+    }
+
+    &__row{
+        grid-template-columns: repeat(2, 1fr);
+
+        &__card{
+            &:nth-child(2){
+                grid-column: 2/3;
+                grid-row: 1/3;
+                align-self: center;
+                width: 100%;
+                height: 85%;
+                background: #000;
+
+                @include image;
+            }
+
+            &:nth-child(3){
+                justify-self: right;
+                max-width: 82%;
+
+                @include image;
+            }
+        }
+    }
+
+    &__container{
+        padding: var(--fs-1000) var(--fs-800);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-width: 57.2rem;
+        width: 100%;
+        background: rgba(#fff, .95);
+        transform: translate(-50%, -50%);
+
+        &::after{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 23.6rem;
+            height: 23.6rem;
+            content: '';
+            background:{
+                image: url("../images/vetor-clinica.svg");
+                size: contain;
+                position: right top;
+                repeat: no-repeat;
+            }
+            z-index: 0;
+        }
+
+        &__content{
+            position: relative;
+            text-align: justify;
+            z-index: 1;
+        }
+    }
+
+    //breakpoint 1112px
+    @include bp(1112px){
+        &::after{
+            bottom: -27rem;
+            width: 19.2rem;
+            height: 25rem;
+        }
+    }
+
+    //breakpoint tablet
+    @include mq(md){
+        position: relative;
+
+        .container{
+            display: flex;
+            gap: calc(var(--gap) * 2);
+            //flex-direction: column;
+        }
+
+        &__row{
+            flex-basis: 45%;
+            display: flex;
+            flex-direction: column;
+
+            &__card{
+                max-width: 100% !important;
+                max-height: 33.33% !important;
+                width: 100%;
+                height: 100%;
+                grid-column: initial !important;
+                background: #000;
+                @include image;
+            }
+        }
+
+        &__container{
+            flex-grow: 1;
+            position: relative;
+            top: initial;
+            left: initial;
+            max-width: 100%;
+            max-height: 100%;
+            transform: initial;
+            order: -1;
+        }
+    }
+
+    //breakpoint mobile
+    @include mq(sm){
+        &::after{
+            display: none;
+        }
+
+        &__row{
+            display: none;
+        }
+
+        &__container{
+            padding: var(--fs-1000) var(--fs-400);
+        }
+    }
+}

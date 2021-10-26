@@ -1,0 +1,113 @@
+@use "../../abstracts" as *;
+
+.cta{
+    position: relative;
+
+    &::after{
+        position: absolute;
+        left: 0;
+        top: -27rem;
+        width: 19.2rem;
+        height: 25rem;
+        background:{
+            image: url("../images/imagem-petalas-05.png");
+            size: contain;
+            position: center;
+            repeat: no-repeat;
+        }
+        transform: scaleX(-1);
+        content: '';
+        z-index: 10;
+    }
+
+    &__row{
+        &__image{
+            overflow: hidden;
+
+            @include image;
+
+            &:nth-child(1){
+                border-top-left-radius: var(--fs-600);
+                border-bottom-right-radius: var(--fs-600);
+            }
+
+            &:nth-child(3){
+                border-top-right-radius: var(--fs-600);
+                border-bottom-left-radius: var(--fs-600);
+            }
+        }
+
+        &__content{
+            text-align: center;
+
+            @include image;
+
+            img{
+                height: 20rem;
+            }
+
+            p{
+                a{
+                    color: inherit;
+                    @include transition(color);
+
+                    &:hover{
+                        color: var(--clr-primary-500);
+                        @include transition(color);
+                    }
+                }
+            }
+        }
+    }
+
+    //breakpoint 1112px
+    @include bp(1112px){
+        &__row{
+            grid-template-columns: 1fr 2fr;
+
+            &__image{
+                max-height: 25rem;
+                height: 100%;
+                border-radius: initial !important;
+
+                &:nth-child(1){
+                    border-bottom-right-radius: var(--fs-600) !important;
+                }
+
+                &:nth-child(3){
+                    border-top-right-radius: var(--fs-600) !important;
+                }
+            }
+
+            &__content{
+                grid-column: 2/3;
+                grid-row: 1/3;
+                text-align: left;
+
+                p{
+                    text-align: justify;
+                }
+
+                img{
+                    height: 30rem;
+                }
+            }
+        }
+    }
+
+    //breakpoint mobile
+    @include mq(sm){
+        &__row{
+            gap: var(--gap);
+
+            &__content{
+                text-align: center;
+
+                .btn{
+                    display: inline-block;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

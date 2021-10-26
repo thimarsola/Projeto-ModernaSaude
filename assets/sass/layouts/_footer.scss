@@ -1,0 +1,47 @@
+@use '../abstracts' as *;
+
+.footer{
+
+    &__content{
+        &__row{
+            &__social{
+                li{
+                    font-size: var(--fs-400);
+                }
+            }
+        }
+    }
+
+
+    &__developer{
+        &__row{
+            &__validator{
+                a{
+                    small{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+
+    //breakpoint mobile
+    @include mq(sm){
+        &__content{
+            &__row{
+                img{
+                    width: auto;
+                    height: 8rem;
+                }
+            }
+        }
+
+        &__developer{
+            &__row{
+                justify-content: center;
+            }
+        }
+    }
+}

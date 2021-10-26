@@ -1,0 +1,41 @@
+@use "../../abstracts" as *;
+
+.harmonizing{
+    position: relative;
+
+    &::before{
+        display: block;
+        width: 100%;
+        height: 15rem;
+        background:{
+            image: url("../images/vetor-facial.svg");
+            size: cover;
+            position: right bottom;
+            repeat: no-repeat;
+            color: var(--clr-white-500);
+        }
+        content: '';
+    }
+
+    &::after{
+        display: block;
+        width: 100%;
+        height: 15rem;
+        background:{
+            image: url("../images/vetor-procedimento-02.svg");
+            size: cover;
+            position: right top;
+            repeat: no-repeat;
+            color: var(--clr-white-500);
+        }
+        content: '';
+    }
+
+    &__container{
+        &__row{
+            &__card{
+                @include card;
+            }
+        }
+    }
+}
